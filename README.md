@@ -32,19 +32,42 @@ Please note that this has only been tested when run from Ubuntu. Your mileage ma
 1. Run the following command to initialize Kubernetes and support joining worker nodes:
 
     ```
-    sudo kubeadm init --apiserver-advertise-address 192.168.33.13 --pod-network-cidr=10.244.0.0/16
+    sudo kubeadm init --apiserver-advertise-address 192.168.33.13 --pod-network-cidr=192.168.0.0/16
 
-    # Run the commands shown
+    # Run the commands shown in the console output. Example:
 
-    # Copy the join command and use it in the next step
+    mkdir -p $HOME/.kube
+    sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+    sudo chown $(id -u):$(id -g) $HOME/.kube/config
+
+    # Copy the join command and save it (you'll need it later). 
+    # DO NOT USE THIS EXACT COMMAND - it's just an example :-)
+
+    kubeadm join 192.168.33.13:6443 --token xi0awh.adpuyyyafftlzg50 \
+	--discovery-token-ca-cert-hash sha256:692b16520d2cb2310aef597ea2b68509aca9f78086b28dc16363ef54bb932f55 
+
+    ```
+
+1. Install a Calico network (steps in the link below - select the `Manifest` tab):
+
+    https://projectcalico.docs.tigera.io/getting-started/kubernetes/self-managed-onprem/onpremises
+
+
+    ```
+    # Example (use the calico version from the above link):
+
+    curl https://raw.githubusercontent.com/projectcalico/calico/v3.25.0/manifests/calico.yaml -O
+
+    kubectl apply -f calico.yaml
+
     ```
 
 1. Join the worker nodes to the master node:
 
     ```
-    vagrant ssh [worker1 | worker2]
+    vagrant ssh [worker-1 | worker-2]
 
-    # Run the join command from the master
+    # Run the join command you saved from the master
     ```
 
 1. You can update the machine packages by running the following:
@@ -55,6 +78,6 @@ Please note that this has only been tested when run from Ubuntu. Your mileage ma
 
 ## Credits 
 
-This is based on a project originally created by Mehmet Ali Baykara:
+The Vagrant file is from a project originally created by Mehmet Ali Baykara:
 
 https://github.com/mbaykara/k8s-cluster
