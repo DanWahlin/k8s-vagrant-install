@@ -34,7 +34,9 @@ Please note that this has only been tested when run from Ubuntu. Your mileage ma
     ```
     sudo kubeadm init --apiserver-advertise-address 192.168.33.13 --pod-network-cidr=10.244.0.0/16
 
-    # Copy the join command
+    # Run the commands shown
+
+    # Copy the join command and use it in the next step
     ```
 
 1. Join the worker nodes to the master node:
