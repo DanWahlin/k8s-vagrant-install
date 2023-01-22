@@ -1,6 +1,6 @@
 # Setting up a Kubernetes Cluster using Vagrant
 
-This will create a 3-node Kubernetes 1.26.* cluster that uses containerd:
+This will create a development/test 3-node Kubernetes 1.26.* cluster that uses containerd:
 
 * 192.168.33.13 master
 * 192.168.33.14 worker-1
