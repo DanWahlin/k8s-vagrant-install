@@ -32,7 +32,7 @@ Please note that this has only been tested when run from Ubuntu. Your mileage ma
 1. Run the following command to initialize Kubernetes and support joining worker nodes:
 
     ```
-    kubeadm init --apiserver-advertise-address 192.168.33.13 --pod-network-cidr=10.244.0.0/16
+    sudo kubeadm init --apiserver-advertise-address 192.168.33.13 --pod-network-cidr=10.244.0.0/16
 
     # Copy the join command
     ```
