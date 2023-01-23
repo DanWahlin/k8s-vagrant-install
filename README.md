@@ -1,23 +1,22 @@
 # Setting up a Kubernetes Cluster using Vagrant
 
-This will create a development/test 3-node Kubernetes 1.26.* cluster that uses containerd:
-
-* 192.168.33.13 master
-* 192.168.33.14 worker-1
-* 192.168.33.15 worker-2
+This will create a development/test 3 node Kubernetes 1.26.* cluster that runs in VirtualBox.
 
 ## Requirements
 
-- Vagrant
-- VirtualBox
-- Ubuntu
+- [Vagrant](https://www.vagrantup.com/)
+- [VirtualBox](https://www.virtualbox.org/)
+- [Ubuntu](https://ubuntu.com/download)
 
 ## Install Steps
 
 Please note that this has only been tested when run from Ubuntu. Your mileage may vary on other distributions.
 
-1. Clone this repo.
-1. Go into the root of the project and run:
+1. Start up your Ubuntu instance and login.
+
+1. Clone this repo into your Ubuntu instance.
+
+1. Go into cloned project's folder and run:
 
     ``` 
     vagrant up
@@ -75,6 +74,12 @@ Please note that this has only been tested when run from Ubuntu. Your mileage ma
     ```
     sudo apt update
     sudo apt upgrade
+
+1. You should now have a 3 node cluster (1 master and 2 workers):
+
+    * 192.168.33.13 master
+    * 192.168.33.14 worker-1
+    * 192.168.33.15 worker-2
 
 ## Credits 
 
